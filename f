@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Little Surprise</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top, #ffe6f2, #ffb6d9);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    /* glitter effect */
+    body::before, body::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+      background-size: 60px 60px, 90px 90px;
+      background-position: 0 0, 30px 30px;
+      opacity: 0.35;
+      animation: sparkle 6s linear infinite;
+    }
+
+    body::after {
+      animation-duration: 10s;
+      opacity: 0.25;
+    }
+
+    @keyframes sparkle {
+      from { transform: translateY(0); }
+      to { transform: translateY(-60px); }
+    }
+
+    .card {
+      background: white;
+      padding: 35px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+      width: 320px;
+      z-index: 2;
+    }
+
+    h2 {
+      margin-top: 10px;
+      color: #ff5fa2;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      background: #ff5fa2;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ff3d8b;
+    }
+
+    .message {
+      display: none;
+      margin-top: 25px;
+      font-size: 22px;
+      color: #444;
+      animation: pop 0.6s ease-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Hello Kitty style character */
+    .kitty {
+      width: 80px;
+      height: 65px;
+      background: #fff;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      position: relative;
+      animation: float 2.5s ease-in-out infinite;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    /* ears */
+    .kitty::before,
+    .kitty::after {
+      content: "";
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      background: #fff;
+      border-radius: 50%;
+      top: -14px;
+    }
+
+    .kitty::before { left: 5px; }
+    .kitty::after { right: 5px; }
+
+    /* eyes */
+    .eye {
+      width: 6px;
+      height: 6px;
+      background: #333;
+      border-radius: 50%;
+      position: absolute;
+      top: 28px;
+    }
+
+    .eye.left { left: 25px; }
+    .eye.right { right: 25px; }
+
+    /* bow */
+    .bow {
+      width: 12px;
+      height: 12px;
+      background: #ff4f9a;
+      position: absolute;
+      top: 14px;
+      right: 12px;
+      border-radius: 3px;
+    }
+
+    .bow::before, .bow::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 8px;
+      background: #ff4f9a;
+      border-radius: 8px;
+      top: 2px;
+    }
+
+    .bow::before { left: -10px; }
+    .bow::after { right: -10px; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="kitty">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="bow"></div>
+    </div>
+
+    <h2>hi cutu</h2>
+    <p>I have something for you</p>
+
+    <button onclick="showMessage()">Open</button>
+
+    <div class="message" id="msg">
+      have a nice day
+    </div>
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById("msg").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
